@@ -1,0 +1,277 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5FF75D1D1500E8B200CFC305 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FF75D1C1500E8B200CFC305 /* UIKit.framework */; };
+		5FF75D1F1500E8B200CFC305 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FF75D1E1500E8B200CFC305 /* Foundation.framework */; };
+		5FF75D211500E8B200CFC305 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FF75D201500E8B200CFC305 /* CoreGraphics.framework */; };
+		5FF75D291500E8B200CFC305 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF75D281500E8B200CFC305 /* main.m */; };
+		5FF75D2D1500E8B200CFC305 /* UICircularSliderAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF75D2C1500E8B200CFC305 /* UICircularSliderAppDelegate.m */; };
+		5FF75D301500E8B200CFC305 /* UICircularSliderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF75D2F1500E8B200CFC305 /* UICircularSliderViewController.m */; };
+		5FF75D421500E8F100CFC305 /* UICircularSliderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FF75D411500E8F100CFC305 /* UICircularSliderViewController.xib */; };
+		5FF75D4B1500E94300CFC305 /* UICircularSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF75D4A1500E94300CFC305 /* UICircularSlider.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5FF75D181500E8B200CFC305 /* UICircularSlider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UICircularSlider.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FF75D1C1500E8B200CFC305 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		5FF75D1E1500E8B200CFC305 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5FF75D201500E8B200CFC305 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		5FF75D241500E8B200CFC305 /* UICircularSlider-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UICircularSlider-Info.plist"; sourceTree = "<group>"; };
+		5FF75D281500E8B200CFC305 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5FF75D2A1500E8B200CFC305 /* UICircularSlider-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UICircularSlider-Prefix.pch"; sourceTree = "<group>"; };
+		5FF75D2B1500E8B200CFC305 /* UICircularSliderAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UICircularSliderAppDelegate.h; sourceTree = "<group>"; };
+		5FF75D2C1500E8B200CFC305 /* UICircularSliderAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UICircularSliderAppDelegate.m; sourceTree = "<group>"; };
+		5FF75D2E1500E8B200CFC305 /* UICircularSliderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UICircularSliderViewController.h; sourceTree = "<group>"; };
+		5FF75D2F1500E8B200CFC305 /* UICircularSliderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UICircularSliderViewController.m; sourceTree = "<group>"; };
+		5FF75D411500E8F100CFC305 /* UICircularSliderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UICircularSliderViewController.xib; sourceTree = "<group>"; };
+		5FF75D491500E94300CFC305 /* UICircularSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICircularSlider.h; sourceTree = "<group>"; };
+		5FF75D4A1500E94300CFC305 /* UICircularSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICircularSlider.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5FF75D151500E8B200CFC305 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FF75D1D1500E8B200CFC305 /* UIKit.framework in Frameworks */,
+				5FF75D1F1500E8B200CFC305 /* Foundation.framework in Frameworks */,
+				5FF75D211500E8B200CFC305 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5FF75D0D1500E8B200CFC305 = {
+			isa = PBXGroup;
+			children = (
+				5FF75D471500E92800CFC305 /* UICircularSlider */,
+				5FF75D221500E8B200CFC305 /* test_project */,
+				5FF75D1B1500E8B200CFC305 /* Frameworks */,
+				5FF75D191500E8B200CFC305 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5FF75D191500E8B200CFC305 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5FF75D181500E8B200CFC305 /* UICircularSlider.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5FF75D1B1500E8B200CFC305 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5FF75D1C1500E8B200CFC305 /* UIKit.framework */,
+				5FF75D1E1500E8B200CFC305 /* Foundation.framework */,
+				5FF75D201500E8B200CFC305 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5FF75D221500E8B200CFC305 /* test_project */ = {
+			isa = PBXGroup;
+			children = (
+				5FF75D2B1500E8B200CFC305 /* UICircularSliderAppDelegate.h */,
+				5FF75D2C1500E8B200CFC305 /* UICircularSliderAppDelegate.m */,
+				5FF75D2E1500E8B200CFC305 /* UICircularSliderViewController.h */,
+				5FF75D2F1500E8B200CFC305 /* UICircularSliderViewController.m */,
+				5FF75D411500E8F100CFC305 /* UICircularSliderViewController.xib */,
+				5FF75D231500E8B200CFC305 /* Supporting Files */,
+			);
+			name = test_project;
+			path = UICircularSlider;
+			sourceTree = "<group>";
+		};
+		5FF75D231500E8B200CFC305 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5FF75D241500E8B200CFC305 /* UICircularSlider-Info.plist */,
+				5FF75D281500E8B200CFC305 /* main.m */,
+				5FF75D2A1500E8B200CFC305 /* UICircularSlider-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5FF75D471500E92800CFC305 /* UICircularSlider */ = {
+			isa = PBXGroup;
+			children = (
+				5FF75D491500E94300CFC305 /* UICircularSlider.h */,
+				5FF75D4A1500E94300CFC305 /* UICircularSlider.m */,
+			);
+			name = UICircularSlider;
+			path = ../UICircularSlider;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5FF75D171500E8B200CFC305 /* UICircularSlider */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5FF75D361500E8B200CFC305 /* Build configuration list for PBXNativeTarget "UICircularSlider" */;
+			buildPhases = (
+				5FF75D141500E8B200CFC305 /* Sources */,
+				5FF75D151500E8B200CFC305 /* Frameworks */,
+				5FF75D161500E8B200CFC305 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UICircularSlider;
+			productName = UICircularSlider;
+			productReference = 5FF75D181500E8B200CFC305 /* UICircularSlider.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5FF75D0F1500E8B200CFC305 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = UICircularSlider;
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = "Zouhair Mahieddine";
+			};
+			buildConfigurationList = 5FF75D121500E8B200CFC305 /* Build configuration list for PBXProject "UICircularSlider" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5FF75D0D1500E8B200CFC305;
+			productRefGroup = 5FF75D191500E8B200CFC305 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5FF75D171500E8B200CFC305 /* UICircularSlider */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5FF75D161500E8B200CFC305 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FF75D421500E8F100CFC305 /* UICircularSliderViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5FF75D141500E8B200CFC305 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FF75D291500E8B200CFC305 /* main.m in Sources */,
+				5FF75D2D1500E8B200CFC305 /* UICircularSliderAppDelegate.m in Sources */,
+				5FF75D301500E8B200CFC305 /* UICircularSliderViewController.m in Sources */,
+				5FF75D4B1500E94300CFC305 /* UICircularSlider.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		5FF75D341500E8B200CFC305 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		5FF75D351500E8B200CFC305 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5FF75D371500E8B200CFC305 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UICircularSlider/UICircularSlider-Prefix.pch";
+				INFOPLIST_FILE = "UICircularSlider/UICircularSlider-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		5FF75D381500E8B200CFC305 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UICircularSlider/UICircularSlider-Prefix.pch";
+				INFOPLIST_FILE = "UICircularSlider/UICircularSlider-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5FF75D121500E8B200CFC305 /* Build configuration list for PBXProject "UICircularSlider" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5FF75D341500E8B200CFC305 /* Debug */,
+				5FF75D351500E8B200CFC305 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5FF75D361500E8B200CFC305 /* Build configuration list for PBXNativeTarget "UICircularSlider" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5FF75D371500E8B200CFC305 /* Debug */,
+				5FF75D381500E8B200CFC305 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5FF75D0F1500E8B200CFC305 /* Project object */;
+}

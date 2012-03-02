@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>--ignore</key>
+	<array>
+		<string>Frameworks</string>
+	</array>
+	<key>--project-name</key>
+	<string>UICircularSlider</string>
+	<key>--project-company</key>
+	<string>Zedenem</string>
+	<key>--company-id</key>
+	<string>com.zedenem</string>
+	<key>--output</key>
+	<string>./docs</string>
+	<key>--repeat-first-par</key>
+	<false/>
+	<key>--install-docset</key>
+	<true/>
+	<key>--keep-intermediate-files</key>
+	<false/>
+</dict>
+</plist>
