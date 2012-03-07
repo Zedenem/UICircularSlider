@@ -7,28 +7,43 @@
 //
 
 #import "UICircularSliderViewController.h"
+#import "UICircularSlider.h"
 
 @interface UICircularSliderViewController ()
+
+@property (unsafe_unretained, nonatomic) IBOutlet UISlider *slider;
+@property (unsafe_unretained, nonatomic) IBOutlet UIProgressView *progressView;
+@property (unsafe_unretained, nonatomic) IBOutlet UICircularSlider *circularSlider;
 
 @end
 
 @implementation UICircularSliderViewController
+@synthesize slider = _slider;
+@synthesize progressView = _progressView;
+@synthesize circularSlider = _circularSlider;
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	[self.circularSlider setMinimumValue:self.slider.minimumValue];
+	[self.circularSlider setMaximumValue:self.slider.maximumValue];
 }
 
-- (void)viewDidUnload
-{
+- (void)viewDidUnload {
+	[self setProgressView:nil];
+	[self setCircularSlider:nil];
+	[self setSlider:nil];
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-	return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+	return YES;
 }
+
+- (IBAction)updateProgress:(UISlider *)sender {
+	float progress = translateValueFromSourceIntervalToDestinationInterval(sender.value, sender.minimumValue, sender.maximumValue, 0.0, 1.0);
+	[self.progressView setProgress:progress];
+	[self.circularSlider setValue:sender.value];
+}
+
 
 @end
