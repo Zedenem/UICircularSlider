@@ -35,7 +35,7 @@ typedef enum {
 	UICircularSliderStylePie,
 } UICircularSliderStyle;
 
-@interface UICircularSlider : UIView
+@interface UICircularSlider : UIControl
 
 /**
  * The current value of the receiver.
@@ -108,3 +108,4 @@ typedef enum {
  *				b = dMax - a*sMax = dMin - a*sMin
  */
 float translateValueFromSourceIntervalToDestinationInterval(float sourceValue, float sourceIntervalMinimum, float sourceIntervalMaximum, float destinationIntervalMinimum, float destinationIntervalMaximum);
+CGFloat clockwiseAngleBetweenThreePoints(CGPoint centerPoint, CGPoint p1, CGPoint p2);

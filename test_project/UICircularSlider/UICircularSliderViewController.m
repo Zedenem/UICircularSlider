@@ -24,6 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	[self.circularSlider addTarget:self action:@selector(updateProgress:) forControlEvents:UIControlEventValueChanged];
 	[self.circularSlider setMinimumValue:self.slider.minimumValue];
 	[self.circularSlider setMaximumValue:self.slider.maximumValue];
 }
@@ -43,6 +44,7 @@
 	float progress = translateValueFromSourceIntervalToDestinationInterval(sender.value, sender.minimumValue, sender.maximumValue, 0.0, 1.0);
 	[self.progressView setProgress:progress];
 	[self.circularSlider setValue:sender.value];
+	[self.slider setValue:sender.value];
 }
 
 

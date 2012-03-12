@@ -26,13 +26,23 @@
 
 @interface UICircularSlider()
 
+@property (nonatomic) CGPoint thumbCenterPoint;
+
+#pragma mark - Init and Setup methods
 - (void)setup;
 
-- (void)drawCircularTrack:(float)track atPoint:(CGPoint)point withRadius:(CGFloat)radius inContext:(CGContextRef)context;
-- (void)drawPieTrack:(float)track atPoint:(CGPoint)point withRadius:(CGFloat)radius inContext:(CGContextRef)context;
+#pragma mark - Thumb management methods
+- (BOOL)isPointInThumb:(CGPoint)point;
+
+#pragma mark - Drawing methods
+- (CGFloat)sliderRadius;
+- (void)drawThumbAtPoint:(CGPoint)sliderButtonCenterPoint inContext:(CGContextRef)context;
+- (CGPoint)drawCircularTrack:(float)track atPoint:(CGPoint)point withRadius:(CGFloat)radius inContext:(CGContextRef)context;
+- (CGPoint)drawPieTrack:(float)track atPoint:(CGPoint)point withRadius:(CGFloat)radius inContext:(CGContextRef)context;
 
 @end
 
+#pragma mark -
 @implementation UICircularSlider
 
 @synthesize value = _value;
@@ -42,6 +52,7 @@
 		if (value < self.minimumValue) { value = self.minimumValue; }
 		_value = value;
 		[self setNeedsDisplay];
+		[self sendActionsForControlEvents:UIControlEventValueChanged];
 	}
 }
 @synthesize minimumValue = _minimumValue;
@@ -87,6 +98,10 @@
 	}
 }
 
+@synthesize thumbCenterPoint = _thumbCenterPoint;
+
+/** @name Init and Setup methods */
+#pragma mark - Init and Setup methods
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
@@ -105,9 +120,37 @@
 	self.minimumTrackTintColor = [UIColor blueColor];
 	self.maximumTrackTintColor = [UIColor whiteColor];
 	self.continuous = YES;
+	self.thumbCenterPoint = CGPointZero;
+	
+	UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureHappened:)];
+	[self addGestureRecognizer:tapGestureRecognizer];
+	
+	UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureHappened:)];
+	panGestureRecognizer.maximumNumberOfTouches = panGestureRecognizer.minimumNumberOfTouches;
+	[self addGestureRecognizer:panGestureRecognizer];
 }
 
-- (void)drawCircularTrack:(float)track atPoint:(CGPoint)center withRadius:(CGFloat)radius inContext:(CGContextRef)context {
+/** @name Drawing methods */
+#pragma mark - Drawing methods
+#define kLineWidth 5.0
+- (CGFloat)sliderRadius {
+	CGFloat radius = MIN(self.bounds.size.width/2, self.bounds.size.height/2);
+	radius -= kLineWidth*2;	
+	return radius;
+}
+#define kThumbRadius 10.0
+- (void)drawThumbAtPoint:(CGPoint)sliderButtonCenterPoint inContext:(CGContextRef)context {
+	UIGraphicsPushContext(context);
+	CGContextBeginPath(context);
+	
+	CGContextAddArc(context, sliderButtonCenterPoint.x, sliderButtonCenterPoint.y, kThumbRadius, 0.0, 2*M_PI, NO);
+	
+	CGContextFillPath(context);
+	CGContextStrokePath(context);
+	UIGraphicsPopContext();
+}
+
+- (CGPoint)drawCircularTrack:(float)track atPoint:(CGPoint)center withRadius:(CGFloat)radius inContext:(CGContextRef)context {
 	UIGraphicsPushContext(context);
 	CGContextBeginPath(context);
 	
@@ -117,11 +160,15 @@
 	CGFloat endAngle = startAngle + angleFromTrack;
 	CGContextAddArc(context, center.x, center.y, radius, startAngle, endAngle, NO);
 	
+	CGPoint arcEndPoint = CGContextGetPathCurrentPoint(context);
+	
 	CGContextStrokePath(context);
 	UIGraphicsPopContext();
+	
+	return arcEndPoint;
 }
 
-- (void)drawPieTrack:(float)track atPoint:(CGPoint)center withRadius:(CGFloat)radius inContext:(CGContextRef)context {
+- (CGPoint)drawPieTrack:(float)track atPoint:(CGPoint)center withRadius:(CGFloat)radius inContext:(CGContextRef)context {
 	UIGraphicsPushContext(context);
 	
 	float angleFromTrack = translateValueFromSourceIntervalToDestinationInterval(track, self.minimumValue, self.maximumValue, 0, 2*M_PI);
@@ -131,12 +178,14 @@
 	CGContextMoveToPoint(context, center.x, center.y);
 	CGContextAddArc(context, center.x, center.y, radius, startAngle, endAngle, NO);
 	
+	CGPoint arcEndPoint = CGContextGetPathCurrentPoint(context);
+	
 	CGContextClosePath(context);
 	CGContextFillPath(context);
 	UIGraphicsPopContext();
+	
+	return arcEndPoint;
 }
-
-#define kLineWidth 5.0
 
 - (void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -145,11 +194,9 @@
 	middlePoint.x = self.bounds.origin.x + self.bounds.size.width/2;
 	middlePoint.y = self.bounds.origin.y + self.bounds.size.height/2;
 	
-	CGFloat radius = MIN(self.bounds.size.width/2, self.bounds.size.height/2);
-	radius -= kLineWidth*2;
-	
 	CGContextSetLineWidth(context, kLineWidth);
 	
+	CGFloat radius = [self sliderRadius];
 	switch (self.sliderStyle) {
 		case UICircularSliderStylePie:
 			[self.maximumTrackTintColor setFill];
@@ -157,15 +204,54 @@
 			[self.minimumTrackTintColor setStroke];
 			[self drawCircularTrack:self.maximumValue atPoint:middlePoint withRadius:radius inContext:context];
 			[self.minimumTrackTintColor setFill];
-			[self drawPieTrack:self.value atPoint:middlePoint withRadius:radius inContext:context];
+			self.thumbCenterPoint = [self drawPieTrack:self.value atPoint:middlePoint withRadius:radius inContext:context];
 			break;
 		case UICircularSliderStyleCircle:
 		default:
 			[self.maximumTrackTintColor setStroke];
 			[self drawCircularTrack:self.maximumValue atPoint:middlePoint withRadius:radius inContext:context];
 			[self.minimumTrackTintColor setStroke];
-			[self drawCircularTrack:self.value atPoint:middlePoint withRadius:radius inContext:context];
+			self.thumbCenterPoint = [self drawCircularTrack:self.value atPoint:middlePoint withRadius:radius inContext:context];
 			break;
+	}
+	
+	[self.minimumTrackTintColor setFill];
+	[self.minimumTrackTintColor setStroke];
+	[self drawThumbAtPoint:self.thumbCenterPoint inContext:context];
+}
+
+/** @name Thumb management methods */
+#pragma mark - Thumb management methods
+- (BOOL)isPointInThumb:(CGPoint)point {
+	CGRect thumbTouchRect = CGRectMake(self.thumbCenterPoint.x - kThumbRadius, self.thumbCenterPoint.y - kThumbRadius, kThumbRadius*2, kThumbRadius*2);
+	return CGRectContainsPoint(thumbTouchRect, point);
+}
+
+/** @name UIGestureRecognizer management methods */
+#pragma mark - UIGestureRecognizer management methods
+- (void)panGestureHappened:(UIPanGestureRecognizer *)panGestureRecognizer {
+	CGPoint tapLocation = [panGestureRecognizer locationInView:self];
+	switch (panGestureRecognizer.state) {
+		case UIGestureRecognizerStateChanged: {
+			CGFloat radius = [self sliderRadius];
+			CGPoint sliderCenter = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2);
+			CGPoint sliderStartPoint = CGPointMake(sliderCenter.x, sliderCenter.y - radius);
+			CGFloat angle = clockwiseAngleBetweenThreePoints(sliderCenter, sliderStartPoint, tapLocation);
+			
+			self.value = translateValueFromSourceIntervalToDestinationInterval(angle, 0, 2*M_PI, self.minimumValue, self.maximumValue);
+			break;
+		}
+		default:
+			break;
+	}
+}
+- (void)tapGestureHappened:(UITapGestureRecognizer *)tapGestureRecognizer {
+	if (tapGestureRecognizer.state == UIGestureRecognizerStateEnded) {
+		CGPoint tapLocation = [tapGestureRecognizer locationInView:self];
+		if ([self isPointInThumb:tapLocation]) {
+		}
+		else {
+		}
 	}
 }
 
@@ -182,4 +268,20 @@ float translateValueFromSourceIntervalToDestinationInterval(float sourceValue, f
 	destinationValue = a*sourceValue + b;
 	
 	return destinationValue;
+}
+
+CGFloat clockwiseAngleBetweenThreePoints(CGPoint centerPoint, CGPoint p1, CGPoint p2) {
+	CGPoint v1 = CGPointMake(p1.x - centerPoint.x, p1.y - centerPoint.y);
+	CGPoint v2 = CGPointMake(p2.x - centerPoint.x, p2.y - centerPoint.y);
+	
+	CGFloat angle = atan2f(v2.x*v1.y - v1.x*v2.y, v1.x*v2.x + v1.y*v2.y);
+	
+	if (angle < 0) {
+		angle = -angle;
+	}
+	else {
+		angle = 2*M_PI - angle;
+	}
+	
+	return angle;
 }
