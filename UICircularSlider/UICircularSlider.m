@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Zouhair Mahieddine.
 //  http://www.zedenem.com
 //  
-//  This file is part of the UICircularProgressView Library.
+//  This file is part of the UICircularSlider Library.
 //  
 //  UICircularProgressView is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
 //  GNU General Public License for more details.
 //  
 //  You should have received a copy of the GNU General Public License
-//  along with UICircularProgressView.  If not, see <http://www.gnu.org/licenses/>.
+//  along with UICircularSlider.  If not, see <http://www.gnu.org/licenses/>.
 //
 
 #import "UICircularSlider.h"
@@ -88,6 +88,14 @@
 	}
 }
 
+@synthesize thumbTintColor = _thumbTintColor;
+- (void)setThumbTintColor:(UIColor *)thumbTintColor {
+	if (![thumbTintColor isEqual:_thumbTintColor]) {
+		_thumbTintColor = thumbTintColor;
+		[self setNeedsDisplay];
+	}
+}
+
 @synthesize continuous = _continuous;
 
 @synthesize sliderStyle = _sliderStyle;
@@ -119,6 +127,7 @@
 	self.maximumValue = 1.0;
 	self.minimumTrackTintColor = [UIColor blueColor];
 	self.maximumTrackTintColor = [UIColor whiteColor];
+	self.thumbTintColor = [UIColor darkGrayColor];
 	self.continuous = YES;
 	self.thumbCenterPoint = CGPointZero;
 	
@@ -133,20 +142,20 @@
 /** @name Drawing methods */
 #pragma mark - Drawing methods
 #define kLineWidth 5.0
+#define kThumbRadius 12.0
 - (CGFloat)sliderRadius {
 	CGFloat radius = MIN(self.bounds.size.width/2, self.bounds.size.height/2);
-	radius -= kLineWidth*2;	
+	radius -= MAX(kLineWidth, kThumbRadius);	
 	return radius;
 }
-#define kThumbRadius 10.0
 - (void)drawThumbAtPoint:(CGPoint)sliderButtonCenterPoint inContext:(CGContextRef)context {
 	UIGraphicsPushContext(context);
 	CGContextBeginPath(context);
 	
+	CGContextMoveToPoint(context, sliderButtonCenterPoint.x, sliderButtonCenterPoint.y);
 	CGContextAddArc(context, sliderButtonCenterPoint.x, sliderButtonCenterPoint.y, kThumbRadius, 0.0, 2*M_PI, NO);
 	
 	CGContextFillPath(context);
-	CGContextStrokePath(context);
 	UIGraphicsPopContext();
 }
 
@@ -215,8 +224,7 @@
 			break;
 	}
 	
-	[self.minimumTrackTintColor setFill];
-	[self.minimumTrackTintColor setStroke];
+	[self.thumbTintColor setFill];
 	[self drawThumbAtPoint:self.thumbCenterPoint inContext:context];
 }
 
@@ -236,7 +244,14 @@
 			CGFloat radius = [self sliderRadius];
 			CGPoint sliderCenter = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2);
 			CGPoint sliderStartPoint = CGPointMake(sliderCenter.x, sliderCenter.y - radius);
-			CGFloat angle = clockwiseAngleBetweenThreePoints(sliderCenter, sliderStartPoint, tapLocation);
+			CGFloat angle = angleBetweenThreePoints(sliderCenter, sliderStartPoint, tapLocation);
+			
+			if (angle < 0) {
+				angle = -angle;
+			}
+			else {
+				angle = 2*M_PI - angle;
+			}
 			
 			self.value = translateValueFromSourceIntervalToDestinationInterval(angle, 0, 2*M_PI, self.minimumValue, self.maximumValue);
 			break;
@@ -270,18 +285,11 @@ float translateValueFromSourceIntervalToDestinationInterval(float sourceValue, f
 	return destinationValue;
 }
 
-CGFloat clockwiseAngleBetweenThreePoints(CGPoint centerPoint, CGPoint p1, CGPoint p2) {
+CGFloat angleBetweenThreePoints(CGPoint centerPoint, CGPoint p1, CGPoint p2) {
 	CGPoint v1 = CGPointMake(p1.x - centerPoint.x, p1.y - centerPoint.y);
 	CGPoint v2 = CGPointMake(p2.x - centerPoint.x, p2.y - centerPoint.y);
 	
 	CGFloat angle = atan2f(v2.x*v1.y - v1.x*v2.y, v1.x*v2.x + v1.y*v2.y);
-	
-	if (angle < 0) {
-		angle = -angle;
-	}
-	else {
-		angle = 2*M_PI - angle;
-	}
 	
 	return angle;
 }

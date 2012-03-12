@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F7A1DA4150E3C4E00284473 /* circularSliderThumbImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F7A1DA3150E3C4E00284473 /* circularSliderThumbImage.png */; };
 		5FF75D1D1500E8B200CFC305 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FF75D1C1500E8B200CFC305 /* UIKit.framework */; };
 		5FF75D1F1500E8B200CFC305 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FF75D1E1500E8B200CFC305 /* Foundation.framework */; };
 		5FF75D211500E8B200CFC305 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FF75D201500E8B200CFC305 /* CoreGraphics.framework */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5F7A1DA3150E3C4E00284473 /* circularSliderThumbImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circularSliderThumbImage.png; sourceTree = "<group>"; };
 		5FF75D181500E8B200CFC305 /* UICircularSlider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UICircularSlider.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FF75D1C1500E8B200CFC305 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5FF75D1E1500E8B200CFC305 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -79,6 +81,7 @@
 		5FF75D221500E8B200CFC305 /* test_project */ = {
 			isa = PBXGroup;
 			children = (
+				5F7A1DA3150E3C4E00284473 /* circularSliderThumbImage.png */,
 				5FF75D2B1500E8B200CFC305 /* UICircularSliderAppDelegate.h */,
 				5FF75D2C1500E8B200CFC305 /* UICircularSliderAppDelegate.m */,
 				5FF75D2E1500E8B200CFC305 /* UICircularSliderViewController.h */,
@@ -163,6 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FF75D421500E8F100CFC305 /* UICircularSliderViewController.xib in Resources */,
+				5F7A1DA4150E3C4E00284473 /* circularSliderThumbImage.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

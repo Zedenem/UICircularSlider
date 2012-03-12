@@ -3,10 +3,10 @@
 ///  UICircularSlider
 //
 //  Created by Zouhair Mahieddine on 02/03/12.
-///  Copyright (c) 2012 Zouhair Mahieddine.
+//  Copyright (c) 2012 Zouhair Mahieddine.
 //  http://www.zedenem.com
 //  
-//  This file is part of the UICircularProgressView Library.
+//  This file is part of the UICircularSlider Library.
 //  
 //  UICircularProgressView is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
 //  GNU General Public License for more details.
 //  
 //  You should have received a copy of the GNU General Public License
-//  along with UICircularProgressView.  If not, see <http://www.gnu.org/licenses/>.
+//  along with UICircularSlider.  If not, see <http://www.gnu.org/licenses/>.
 //
 
 #import <UIKit/UIKit.h>
@@ -72,11 +72,18 @@ typedef enum {
 @property(nonatomic, retain) UIColor *maximumTrackTintColor;
 
 /**
+ * The color used to tint the standard thumb.
+ */
+@property(nonatomic, retain) UIColor *thumbTintColor;
+
+/**
  * Contains a Boolean value indicating whether changes in the sliders value generate continuous update events.
  *
  * If YES, the slider sends update events continuously to the associated target’s action method.
  * If NO, the slider only sends an action event when the user releases the slider’s thumb control to set the final value.
  * The default value of this property is YES.
+ *
+ * @warning Not implemented Yet.
  */
 @property(nonatomic, getter=isContinuous) BOOL continuous;
 
@@ -108,4 +115,13 @@ typedef enum {
  *				b = dMax - a*sMax = dMin - a*sMin
  */
 float translateValueFromSourceIntervalToDestinationInterval(float sourceValue, float sourceIntervalMinimum, float sourceIntervalMaximum, float destinationIntervalMinimum, float destinationIntervalMaximum);
-CGFloat clockwiseAngleBetweenThreePoints(CGPoint centerPoint, CGPoint p1, CGPoint p2);
+/**
+ * Returns the smallest angle between three points, one of them clearly indicated as the "junction point" or "center point".
+ * @param centerPoint	The "center point" or "junction point"
+ * @param p1			The first point, member of the [centerPoint p1] segment
+ * @param p2			The second point, member of the [centerPoint p2] segment
+ * @return				The angle between those two segments
+ 
+ * This function uses the properties of the triangle and arctan (atan2f) function to calculate the angle.
+ */
+CGFloat angleBetweenThreePoints(CGPoint centerPoint, CGPoint p1, CGPoint p2);
