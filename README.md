@@ -1,4 +1,4 @@
-#This project is realised under the MIT License
+#This project is released under the MIT License
 
 Copyright (c) 2012 Zedenem
 
