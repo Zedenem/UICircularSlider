@@ -239,6 +239,7 @@
 		5FF75D371500E8B200CFC305 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UICircularSlider/UICircularSlider-Prefix.pch";
 				INFOPLIST_FILE = "UICircularSlider/UICircularSlider-Info.plist";
@@ -250,6 +251,7 @@
 		5FF75D381500E8B200CFC305 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UICircularSlider/UICircularSlider-Prefix.pch";
 				INFOPLIST_FILE = "UICircularSlider/UICircularSlider-Info.plist";
