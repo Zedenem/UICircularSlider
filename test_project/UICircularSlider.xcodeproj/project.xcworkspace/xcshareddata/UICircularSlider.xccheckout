@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>4C8F3A52-CB7C-41E0-92DA-8D3A866DE2C1</string>
+	<key>IDESourceControlProjectName</key>
+	<string>UICircularSlider</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>74EB7CAB-4939-4920-8AE7-AB1E8945AF88</key>
+		<string>https://github.com/Zedenem/UICircularSlider.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>test_project/UICircularSlider.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>74EB7CAB-4939-4920-8AE7-AB1E8945AF88</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Zedenem/UICircularSlider.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>74EB7CAB-4939-4920-8AE7-AB1E8945AF88</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>74EB7CAB-4939-4920-8AE7-AB1E8945AF88</string>
+			<key>IDESourceControlWCCName</key>
+			<string>UICircularSlider</string>
+		</dict>
+	</array>
+</dict>
+</plist>
