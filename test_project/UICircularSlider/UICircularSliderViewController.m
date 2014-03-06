@@ -31,8 +31,9 @@
     [self.circularSlider addTarget:self action:@selector(sliderTouchedDown:) forControlEvents:UIControlEventTouchDown];
     [self.circularSlider addTarget:self action:@selector(sliderTouchedUpInside:) forControlEvents:UIControlEventTouchUpInside];
     [self.circularSlider addTarget:self action:@selector(sliderTouchedUpOutside:) forControlEvents:UIControlEventTouchUpOutside];
-	[self.circularSlider setMinimumValue:self.slider.minimumValue];
-	[self.circularSlider setMaximumValue:self.slider.maximumValue];
+	self.circularSlider.minimumValue = self.slider.minimumValue;
+	self.circularSlider.maximumValue =self.slider.maximumValue;
+    self.circularSlider.continuous = NO;
 }
 
 - (void)viewDidUnload {

@@ -39,7 +39,9 @@
 		if (value < self.minimumValue) { value = self.minimumValue; }
 		_value = value;
 		[self setNeedsDisplay];
-		[self sendActionsForControlEvents:UIControlEventValueChanged];
+        if (self.isContinuous) {
+            [self sendActionsForControlEvents:UIControlEventValueChanged];
+        }
 	}
 }
 @synthesize minimumValue = _minimumValue;
@@ -247,6 +249,9 @@
 			break;
 		}
         case UIGestureRecognizerStateEnded:
+            if (!self.isContinuous) {
+                [self sendActionsForControlEvents:UIControlEventValueChanged];
+            }
             if ([self isPointInThumb:tapLocation]) {
                 [self sendActionsForControlEvents:UIControlEventTouchUpInside];
             }
