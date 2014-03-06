@@ -73,8 +73,6 @@ typedef enum {
  * If YES, the slider sends update events continuously to the associated target’s action method.
  * If NO, the slider only sends an action event when the user releases the slider’s thumb control to set the final value.
  * The default value of this property is YES.
- *
- * @warning Not implemented Yet.
  */
 @property(nonatomic, getter=isContinuous) BOOL continuous;
 
