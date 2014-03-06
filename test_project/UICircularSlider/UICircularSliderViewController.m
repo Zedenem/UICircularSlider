@@ -28,6 +28,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	[self.circularSlider addTarget:self action:@selector(updateProgress:) forControlEvents:UIControlEventValueChanged];
+    [self.circularSlider addTarget:self action:@selector(sliderTouchedDown:) forControlEvents:UIControlEventTouchDown];
+    [self.circularSlider addTarget:self action:@selector(sliderTouchedUpInside:) forControlEvents:UIControlEventTouchUpInside];
+    [self.circularSlider addTarget:self action:@selector(sliderTouchedUpOutside:) forControlEvents:UIControlEventTouchUpOutside];
 	[self.circularSlider setMinimumValue:self.slider.minimumValue];
 	[self.circularSlider setMaximumValue:self.slider.maximumValue];
 }
@@ -48,6 +51,17 @@
 	[self.progressView setProgress:progress];
 	[self.circularSlider setValue:sender.value];
 	[self.slider setValue:sender.value];
+}
+
+- (IBAction)sliderTouchedDown:(id)sender {
+    self.view.backgroundColor = [UIColor grayColor];
+}
+
+- (IBAction)sliderTouchedUpInside:(id)sender {
+    self.view.backgroundColor = [UIColor lightGrayColor];
+}
+- (IBAction)sliderTouchedUpOutside:(id)sender {
+    self.view.backgroundColor = [UIColor greenColor];
 }
 
 
